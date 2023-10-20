@@ -6,17 +6,11 @@ first_left = BinaryTree(2)
 first_right = BinaryTree(3)
 second_left = BinaryTree(4)
 second_right = BinaryTree(5)
-# third_left = BinaryTree(6)
-# fourth_right = BinaryTree(7)
 
 root.left = first_left
 root.right = first_right
 first_left.left = second_left
 first_left.right = second_right
-
-
-# second_left.left = third_left
-# first_right.right = fourth_right
 
 
 class TestCase(unittest.TestCase):
@@ -58,6 +52,15 @@ class TestCase(unittest.TestCase):
         root.right = first_right
         first_right = second_right
         second_right.right = third_right
+
+        self.assertEqual(False, is_tree_balanced(root))
+
+    def test_from_machine(self):
+        root = BinaryTree(10)
+        root.left = BinaryTree(5)
+        root.right = BinaryTree(15)
+        root.right.right = BinaryTree(20)
+        root.right.right.right = BinaryTree(25)
 
         self.assertEqual(False, is_tree_balanced(root))
 
